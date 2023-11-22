@@ -7,10 +7,11 @@ public class Controladora {
     
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-    public void agregarUsuario(String nombreUsuario, String contraseña){
+    public void agregarUsuario(String nombreUsuario, String contraseña, boolean esAdmin){
         Usuario usuario = new Usuario();
         usuario.setContraseña(contraseña);
         usuario.setNombreUsuario(nombreUsuario);
+        usuario.setEsAdmin(esAdmin);
         controlPersis.agregarUsuario(usuario);
     }
 
