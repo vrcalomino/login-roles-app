@@ -151,7 +151,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        control.editarUsuario(spiId.getValue(), txtNombreUsuario.getText(), txtContraseña.getText(), cbAdmin.isSelected());
+        control.editarUsuario((int) spiId.getValue(), txtNombreUsuario.getText(), txtContraseña.getText(), cbAdmin.isSelected());
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
