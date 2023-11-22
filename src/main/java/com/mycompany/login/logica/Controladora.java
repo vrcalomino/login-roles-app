@@ -28,10 +28,23 @@ public class Controladora {
     }
 
     public List<Usuario> obtenerUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return controlPersis.traerUsuarios();
     }
 
     public void eliminarUsuario(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        controlPersis.eliminarUsuario(id);
+    }
+
+    public Usuario obtenerUsuarioPorId(int id) {
+        return controlPersis.traerUsuario(id);
+    }
+
+    public void editarUsuario(int id, String nombreUsuario, String contraseña, boolean esAdmin) {
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
+        usuario.setNombreUsuario(nombreUsuario);
+        usuario.setContraseña(contraseña);
+        usuario.setEsAdmin(esAdmin);
+        controlPersis.editarUsuario(usuario);
     }
 }
