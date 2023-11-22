@@ -15,7 +15,7 @@ public class Controladora {
         controlPersis.agregarUsuario(usuario);
     }
 
-    public Usuario validarUsuario(String nombreUsuario, String contraseña) {
+    public Usuario obtenerUsuario(String nombreUsuario, String contraseña) {
         List<Usuario> usuarios = controlPersis.traerUsuarios();
         for(Usuario usu: usuarios){
             if(usu.getNombreUsuario().equals(nombreUsuario)){

@@ -1,6 +1,7 @@
 package com.mycompany.login.igu;
 
 import com.mycompany.login.logica.Controladora;
+import com.mycompany.login.logica.Usuario;
 
 public class IniciarSesion extends javax.swing.JFrame {
 
@@ -134,11 +135,17 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
-        boolean usuarioCorrecto = control.validarUsuario(txtUsuario.getText(), txtContraseña.getText());
-        if(usuarioCorrecto){
-            txtConfirmacion.setText("Tus credenciales son correctas!");
-        } else if(!usuarioCorrecto){
-            txtConfirmacion.setText("Tus credenciales son incorrectas :[");
+        Usuario usuarioCorrecto = control.obtenerUsuario(txtUsuario.getText(), txtContraseña.getText());
+        if(usuarioCorrecto != null) {
+            if(usuarioCorrecto.getContraseña().equals(txtContraseña.getText())){
+                if(usuarioCorrecto.getEsAdmin()){
+                    txtConfirmacion.setText("Tus credenciales son correctas y sos admin!");
+                } else {
+                    txtConfirmacion.setText("Tus credenciales son correctas y sos admin!");
+                }
+            } else{
+                txtConfirmacion.setText("Tus credenciales son incorrectas :[");
+            }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
