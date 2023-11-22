@@ -16,14 +16,16 @@ public class Usuario implements Serializable {
     @Basic
     private String nombreUsuario;
     private String contraseña;
+    private boolean esAdmin;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombreUsuario, String contraseña) {
+    public Usuario(int id, String nombreUsuario, String contraseña, boolean esAdmin) {
         this.id = id;
         this.nombreUsuario = nombreUsuario;
         this.contraseña = contraseña;
+        this.esAdmin = esAdmin;
     }
 
     public int getId() {
@@ -48,6 +50,14 @@ public class Usuario implements Serializable {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    public boolean isEsAdmin() {
+        return esAdmin;
+    }
+
+    public void setEsAdmin(boolean esAdmin) {
+        this.esAdmin = esAdmin;
     }
 
     @Override
