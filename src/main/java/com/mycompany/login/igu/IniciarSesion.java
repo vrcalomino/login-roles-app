@@ -144,7 +144,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                     pantalla.setLocationRelativeTo(null);
                     this.dispose();
                 } else {
-                    txtConfirmacion.setText("Tus credenciales son correctas y sos admin!");
+                    PanelUsuarios pantalla = new PanelUsuarios();
+                    pantalla.setVisible(true);
+                    pantalla.setLocationRelativeTo(null);
                 }
             } else{
                 txtConfirmacion.setText("Tus credenciales son incorrectas :[");

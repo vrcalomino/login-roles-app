@@ -7,10 +7,10 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class VerUsuarios extends javax.swing.JFrame {
+public class VerUsuariosAdmin extends javax.swing.JFrame {
 
     Controladora control = null;
-    public VerUsuarios() {
+    public VerUsuariosAdmin() {
         control = new Controladora();
         initComponents();
     }
@@ -23,6 +23,8 @@ public class VerUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,6 +50,20 @@ public class VerUsuarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaUsuarios);
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +79,11 @@ public class VerUsuarios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalir)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnSalir))
+                .addContainerGap(167, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -75,12 +94,14 @@ public class VerUsuarios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalir)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
@@ -104,14 +125,43 @@ public class VerUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        PanelUsuarios pantalla = new PanelUsuarios();
+        PanelAdmin pantalla = new PanelAdmin();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if(tablaUsuarios.getRowCount() > 0){
+            if(tablaUsuarios.getSelectedRow() != -1){
+                int id = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
+                control.eliminarUsuario(id);
+                mostrarMensaje("Eliminado con exito!", "Eliminacion Exitosa", "info");
+                cargarTabla();
+            } else {
+                mostrarMensaje("No hay usuario seleccionado", "Eliminacion Fallida", "error");
+            }
+        } else {
+            mostrarMensaje("La tabla se encuentra vacia", "Eliminacion Fallida", "error");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       if(tablaUsuarios.getRowCount() > 0){
+           if(tablaUsuarios.getSelectedRow() != -1){
+               int id = Integer.parseInt(String.valueOf(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
+               EditarUsuario pantalla = new EditarUsuario(id);
+               pantalla.setVisible(true);
+               pantalla.setLocationRelativeTo(null);
+               this.dispose();
+           }
+       }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -126,17 +176,16 @@ public class VerUsuarios extends javax.swing.JFrame {
                 return false;
             }
         };
-        String titulos[] = {"Nombre"};
+        String titulos[] = {"ID", "Nombre", "Es admin"};
         tabla.setColumnIdentifiers(titulos);
         
         List<Usuario> listaUsuarios = control.obtenerUsuarios();
         
         if (listaUsuarios != null) {
             for (Usuario usu: listaUsuarios) {
-                if(!usu.getEsAdmin()){
-                    Object[] objeto = {usu.getNombreUsuario()};
-                    tabla.addRow(objeto);
-                }
+                Object[] objeto = {usu.getId(), usu.getNombreUsuario(), usu.getEsAdmin()};
+                
+                tabla.addRow(objeto);
             }
         }
         tablaUsuarios.setModel(tabla);

@@ -1,8 +1,8 @@
 package com.mycompany.login.igu;
 
-public class PanelAdmin extends javax.swing.JFrame {
+public class PanelUsuarios extends javax.swing.JFrame {
 
-    public PanelAdmin() {
+    public PanelUsuarios() {
         initComponents();
     }
 
@@ -13,7 +13,6 @@ public class PanelAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnGoToAgregar = new javax.swing.JButton();
         btnGoToVer = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
@@ -21,14 +20,6 @@ public class PanelAdmin extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("PANEL ADMINISTRADOR");
-
-        btnGoToAgregar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnGoToAgregar.setText("AGREGAR USUARIOS");
-        btnGoToAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoToAgregarActionPerformed(evt);
-            }
-        });
 
         btnGoToVer.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnGoToVer.setText("VER USUARIOS");
@@ -58,8 +49,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                         .addGap(116, 116, 116))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnGoToAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGoToVer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGoToVer, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(263, 263, 263))))
         );
@@ -68,13 +58,11 @@ public class PanelAdmin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(btnGoToAgregar)
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addComponent(btnGoToVer)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalir)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,15 +79,8 @@ public class PanelAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGoToAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToAgregarActionPerformed
-        AgregarUsuario pantalla = new AgregarUsuario();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnGoToAgregarActionPerformed
-
     private void btnGoToVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToVerActionPerformed
-        VerUsuariosAdmin pantalla = new VerUsuariosAdmin();
+        VerUsuarios pantalla = new VerUsuarios();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
         this.dispose();
@@ -114,7 +95,6 @@ public class PanelAdmin extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGoToAgregar;
     private javax.swing.JButton btnGoToVer;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
