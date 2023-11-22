@@ -139,7 +139,10 @@ public class IniciarSesion extends javax.swing.JFrame {
         if(usuarioCorrecto != null) {
             if(usuarioCorrecto.getContraseña().equals(txtContraseña.getText())){
                 if(usuarioCorrecto.getEsAdmin()){
-                    txtConfirmacion.setText("Tus credenciales son correctas y sos admin!");
+                    PanelAdmin pantalla = new PanelAdmin();
+                    pantalla.setVisible(true);
+                    pantalla.setLocationRelativeTo(null);
+                    this.dispose();
                 } else {
                     txtConfirmacion.setText("Tus credenciales son correctas y sos admin!");
                 }

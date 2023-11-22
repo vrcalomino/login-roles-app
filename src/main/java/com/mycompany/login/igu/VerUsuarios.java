@@ -155,6 +155,7 @@ public class VerUsuarios extends javax.swing.JFrame {
                pantalla.setLocationRelativeTo(null);
                this.dispose();
            }
+       }
     }//GEN-LAST:event_btnEditarActionPerformed
 
 
