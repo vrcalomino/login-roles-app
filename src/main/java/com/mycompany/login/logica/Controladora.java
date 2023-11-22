@@ -15,15 +15,15 @@ public class Controladora {
         controlPersis.agregarUsuario(usuario);
     }
 
-    public boolean validarUsuario(String nombreUsuario, String contraseña) {
+    public Usuario validarUsuario(String nombreUsuario, String contraseña) {
         List<Usuario> usuarios = controlPersis.traerUsuarios();
         for(Usuario usu: usuarios){
             if(usu.getNombreUsuario().equals(nombreUsuario)){
                 if (usu.getContraseña().equals(contraseña)){
-                    return true;
+                    return usu;
                 }
             }
         }
-        return false;
+        return null;
     }
 }
