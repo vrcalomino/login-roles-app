@@ -1,8 +1,18 @@
 package com.mycompany.login.logica;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
+    @Basic
     private String nombreUsuario;
     private String contraseña;
 
