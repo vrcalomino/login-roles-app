@@ -2,6 +2,8 @@ package com.mycompany.login.igu;
 
 import com.mycompany.login.logica.Controladora;
 import com.mycompany.login.logica.Usuario;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class EditarUsuario extends javax.swing.JFrame {
 
@@ -161,6 +163,7 @@ public class EditarUsuario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         control.editarUsuario((int) spiId.getValue(), txtNombreUsuario.getText(), txtContraseña.getText(), cbAdmin.isSelected());
+        mostrarMensaje("Editado con exito!", "Edicion exitosa", "info");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -197,5 +200,17 @@ public class EditarUsuario extends javax.swing.JFrame {
         txtNombreUsuario.setText(usuario.getNombreUsuario());
         txtContraseña.setText(usuario.getContraseña());
         cbAdmin.setSelected(usuario.getEsAdmin());
+    }
+    
+    public void mostrarMensaje(String mensaje, String titulo, String tipo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 }

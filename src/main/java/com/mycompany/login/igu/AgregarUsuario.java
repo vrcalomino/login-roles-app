@@ -1,6 +1,8 @@
 package com.mycompany.login.igu;
 
 import com.mycompany.login.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class AgregarUsuario extends javax.swing.JFrame {
 
@@ -140,6 +142,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         control.agregarUsuario(txtNombreUsuario.getText(), txtContraseña.getText(), cbAdmin.isSelected());
+        mostrarMensaje("Agregado con exito!", "Alta exitosa", "info");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -163,4 +166,16 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
+    
+    public void mostrarMensaje(String mensaje, String titulo, String tipo) {
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if (tipo.equals("info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 }
