@@ -1,6 +1,7 @@
 package com.mycompany.login.persistencia;
 
 import com.mycompany.login.logica.Usuario;
+import java.util.List;
 
 public class ControladoraPersistencia {
     
@@ -9,8 +10,8 @@ public class ControladoraPersistencia {
     public void agregarUsuario(Usuario usuario){
         usuarioJpa.create(usuario);
     }
-    
-    public Usuario encontrarUsuario(int id){
-        return usuarioJpa.findUsuario(id);
+
+    public List<Usuario> traerUsuarios() {
+        return usuarioJpa.findUsuarioEntities();
     }
 }

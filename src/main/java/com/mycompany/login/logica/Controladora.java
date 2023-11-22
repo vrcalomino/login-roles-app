@@ -1,6 +1,7 @@
 package com.mycompany.login.logica;
 
 import com.mycompany.login.persistencia.ControladoraPersistencia;
+import java.util.List;
 
 public class Controladora {
     
@@ -12,8 +13,16 @@ public class Controladora {
         usuario.setNombreUsuario(nombreUsuario);
         controlPersis.agregarUsuario(usuario);
     }
-    
-    public Usuario encontrarUsuario(int id){
-        return controlPersis.encontrarUsuario(id);
+
+    public boolean validarUsuario(String nombreUsuario, String contraseña) {
+        List<Usuario> usuarios = controlPersis.traerUsuarios();
+        for(Usuario usu: usuarios){
+            if(usu.getNombreUsuario().equals(nombreUsuario)){
+                if (usu.getContraseña().equals(contraseña)){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
