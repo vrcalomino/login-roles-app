@@ -1,6 +1,6 @@
 # Login-Roles App
 
-This project was made as a one of the final projects for [OOP course]() from TodoCode.
+This project was made as a one of the final projects for [OOP course](https://todocodeacademy.com/course/programacion-orientada-a-objetos-con-java/) from TodoCode.
 I used:
 - Java 11
 - EclipseLink 2.2 as the JPA provider
